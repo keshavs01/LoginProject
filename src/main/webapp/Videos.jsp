@@ -1,4 +1,4 @@
-<%-- <%@page import="com.krawler.Student"%> --%>
+<%@page import="com.krawler.Student"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -13,8 +13,8 @@
 			response.sendRedirect("login.jsp");
 		}
 	
-// 		Student obj = (Student)session.getAttribute("student");
-// 		out.print(obj);
+		Student obj = (Student)session.getAttribute("user");
+		out.print(obj);
 	%>
 	<img src="https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png" alt="Trulli">
 </body>

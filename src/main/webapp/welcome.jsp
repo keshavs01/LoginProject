@@ -14,7 +14,7 @@
 		String uname = request.getParameter("username");
 		out.print("Welcome " + uname);
 	%>
-	</br>
+	
 	<a href="Videos.jsp">Click for Videos</a>
 </body>
 </html>

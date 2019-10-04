@@ -10,6 +10,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.krawler.student.dao.StudentDAO;
+import com.krawler.student.dao.StudentDAOImpl;
+
 /**
  * Servlet implementation class WelcomeController
  */
@@ -23,8 +26,10 @@ public class WelcomeController extends HttpServlet {
 		RequestDispatcher rd ;
 		HttpSession session = request.getSession();
 		
-//		Student st = new Student(1, uname, "Burger");
-//		session.setAttribute("user", st);
+		StudentDAO st = new StudentDAOImpl();
+//		Student user = st.getStudent(uname);
+
+		session.setAttribute("user", st);
 		
 		if(uname.equals("admin")) {
 			session.setAttribute("ssid", 1234);

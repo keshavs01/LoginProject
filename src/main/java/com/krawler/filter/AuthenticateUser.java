@@ -35,11 +35,11 @@ public class AuthenticateUser implements Filter {
 		PrintWriter p = res2.getWriter();
 		
 		
-		if (sessoin == null || sessoin.getAttribute("ssid") == null || sessoin.getAttribute("ssid") == "") {
-			p.print("Pass");
+		if (sessoin.getAttribute("ssid") == "") {
+			p.print("Fail");
 			res2.sendRedirect("login.jsp");
 		} else {
-			p.print("Fail");			
+			p.print("Pass");
 			chain.doFilter(request, response);
 		}
 
