@@ -2,21 +2,21 @@ package com.krawler;
 
 public class Student {
 	
-	int id;
+	String id;
 	String uname;
 	String food;
 	
-	public Student(int id, String uname, String food) {
+	public Student(String id, String uname, String food) {
 		super();
 		this.id = id;
 		this.uname = uname;
 		this.food = food;
 	}
 	
-	public int getId() {
+	public String getId() {
 		return id;
 	}
-	public void setId(int id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 	public String getUname() {

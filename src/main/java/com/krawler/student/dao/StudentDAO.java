@@ -4,6 +4,6 @@ import com.krawler.Student;
 
 public interface StudentDAO {
 	
-	public Student getStudent(int id) throws Exception;
+	public Student getStudent(String uname) throws Exception;
 
 }

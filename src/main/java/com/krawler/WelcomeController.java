@@ -17,27 +17,34 @@ import com.krawler.student.dao.StudentDAOImpl;
  * Servlet implementation class WelcomeController
  */
 public class WelcomeController extends HttpServlet {
-	
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		PrintWriter out = response.getWriter();
-		
-		String uname = request.getParameter("username");
-		String pass = request.getParameter("password");
-		RequestDispatcher rd ;
-		HttpSession session = request.getSession();
-		
-		StudentDAO st = new StudentDAOImpl();
-//		Student user = st.getStudent(uname);
 
-		session.setAttribute("user", st);
-		
-		if(uname.equals("admin")) {
-			session.setAttribute("ssid", 1234);
-			rd = request.getRequestDispatcher("welcome.jsp");
-			rd.forward(request, response);
-		} else {
-			rd = request.getRequestDispatcher("login.jsp");
-			rd.forward(request, response);
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		try {
+			PrintWriter out = response.getWriter();
+
+			String uname = request.getParameter("username");
+			String pass = request.getParameter("password");
+			RequestDispatcher rd;
+			HttpSession session = request.getSession();
+
+			StudentDAO stobj = new StudentDAOImpl();
+
+			Student student = stobj.getStudent(uname);
+
+
+			session.setAttribute("user", student);
+			
+			if (student != null && uname.equals(student.getUname())) {
+				session.setAttribute("ssid", 1234);
+				rd = request.getRequestDispatcher("welcome.jsp");
+				rd.forward(request, response);
+			} else {
+				rd = request.getRequestDispatcher("login.jsp");
+				rd.forward(request, response);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
 	}
 }
